@@ -1,5 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio 15 - ze
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RNTrackPlayer", "RNTrackPlayer\RNTrackPlayer.csproj", "{E292F490-9FB8-11E7-B023-0F938699DB28}"
