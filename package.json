@@ -1,6 +1,6 @@
 {
-  "name": "react-native-track-player",
-  "version": "1.1.8",
+  "name": "z-react-native-track-player",
+  "version": "1.1.8z",
   "description": "A fully fledged audio module created for music apps",
   "contributors": [
     {
@@ -32,10 +32,10 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/react-native-kit/react-native-track-player.git"
+    "url": "https://github.com/zeritte/react-native-track-player"
   },
   "bugs": {
-    "url": "https://github.com/react-native-kit/react-native-track-player/issues"
+    "url": "https://github.com/zeritte/react-native-track-player/issues"
   },
   "scripts": {
     "prepublishOnly": "git submodule update --init --recursive"
