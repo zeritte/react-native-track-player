@@ -6,7 +6,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.support.v4.media.RatingCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.util.Log;
@@ -119,6 +119,7 @@ public class MusicModule extends ReactContextBaseJavaModule implements ServiceCo
 
         // Capabilities
         constants.put("CAPABILITY_PLAY", PlaybackStateCompat.ACTION_PLAY);
+        constants.put("CAPABILITY_TOGGLE_PLAY_PAUSE", PlaybackStateCompat.ACTION_PLAY_PAUSE);
         constants.put("CAPABILITY_PLAY_FROM_ID", PlaybackStateCompat.ACTION_PLAY_FROM_MEDIA_ID);
         constants.put("CAPABILITY_PLAY_FROM_SEARCH", PlaybackStateCompat.ACTION_PLAY_FROM_SEARCH);
         constants.put("CAPABILITY_PAUSE", PlaybackStateCompat.ACTION_PAUSE);
@@ -160,6 +161,9 @@ public class MusicModule extends ReactContextBaseJavaModule implements ServiceCo
 
     @ReactMethod
     public void destroy() {
+        // Ignore if it was already destroyed
+        if (binder == null && !connecting) return;
+
         try {
             if(binder != null) {
                 binder.destroy();

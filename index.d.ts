@@ -1,9 +1,8 @@
-import { Component } from 'react';
+import { Component } from "react";
 
 export = RNTrackPlayer;
 
 declare namespace RNTrackPlayer {
-
   export type EventType =
     | "playback-state"
     | "playback-error"
@@ -26,11 +25,7 @@ declare namespace RNTrackPlayer {
     | "remote-dislike"
     | "remote-bookmark";
 
-  export type TrackType =
-    | "default"
-    | "dash"
-    | "hls"
-    | "smoothstreaming";
+  export type TrackType = "default" | "dash" | "hls" | "smoothstreaming";
 
   type ResourceObject = any;
 
@@ -45,8 +40,11 @@ declare namespace RNTrackPlayer {
   type ServiceHandler = () => Promise<void>;
   export function registerPlaybackService(serviceFactory: () => ServiceHandler): void;
 
-  type EmitterSubscription = { remove: () => void; };
-  export function addEventListener(type: EventType, listener: (data: any) => void): EmitterSubscription;
+  type EmitterSubscription = { remove: () => void };
+  export function addEventListener(
+    type: EventType,
+    listener: (data: any) => void
+  ): EmitterSubscription;
 
   export interface TrackMetadata {
     duration?: number;
@@ -75,18 +73,41 @@ declare namespace RNTrackPlayer {
     maxBuffer?: number;
     playBuffer?: number;
     maxCacheSize?: number;
-    iosCategory?: 'playback' | 'playAndRecord' | 'multiRoute' | 'ambient' | 'soloAmbient' | 'record';
-    iosCategoryMode?: 'default' | 'gameChat' | 'measurement' | 'moviePlayback' | 'spokenAudio' | 'videoChat' | 'videoRecording' | 'voiceChat' | 'voicePrompt';
-    iosCategoryOptions?: Array<'mixWithOthers' | 'duckOthers' | 'interruptSpokenAudioAndMixWithOthers' | 'allowBluetooth' | 'allowBluetoothA2DP' | 'allowAirPlay' | 'defaultToSpeaker'>;
+    iosCategory?:
+      | "playback"
+      | "playAndRecord"
+      | "multiRoute"
+      | "ambient"
+      | "soloAmbient"
+      | "record";
+    iosCategoryMode?:
+      | "default"
+      | "gameChat"
+      | "measurement"
+      | "moviePlayback"
+      | "spokenAudio"
+      | "videoChat"
+      | "videoRecording"
+      | "voiceChat"
+      | "voicePrompt";
+    iosCategoryOptions?: Array<
+      | "mixWithOthers"
+      | "duckOthers"
+      | "interruptSpokenAudioAndMixWithOthers"
+      | "allowBluetooth"
+      | "allowBluetoothA2DP"
+      | "allowAirPlay"
+      | "defaultToSpeaker"
+    >;
     waitForBuffer?: boolean;
   }
 
   interface FeedbackOptions {
     /** Marks wether the option should be marked as active or "done" */
-    isActive: boolean
+    isActive: boolean;
 
     /** The title to give the action (relevant for iOS) */
-    title: string
+    title: string;
   }
 
   export interface MetadataOptions {
@@ -128,7 +149,7 @@ declare namespace RNTrackPlayer {
 
   // Control Center / Notification Metadata Commands
   export function updateOptions(options: MetadataOptions): void;
-  export function updateMetadataForTrack(id: string, metadata: TrackMetadata) : Promise<void>;
+  export function updateMetadataForTrack(id: string, metadata: TrackMetadata): Promise<void>;
 
   // Player Playback Commands
 
@@ -185,6 +206,7 @@ declare namespace RNTrackPlayer {
   export const CAPABILITY_PLAY_FROM_ID: Capability;
   export const CAPABILITY_PLAY_FROM_SEARCH: Capability;
   export const CAPABILITY_PAUSE: Capability;
+  export const CAPABILITY_TOGGLE_PLAY_PAUSE: Capability;
   export const CAPABILITY_STOP: Capability;
   export const CAPABILITY_SEEK_TO: Capability;
   export const CAPABILITY_SKIP: Capability;
@@ -200,5 +222,4 @@ declare namespace RNTrackPlayer {
   export const PITCH_ALGORITHM_LINEAR: PitchAlgorithm;
   export const PITCH_ALGORITHM_MUSIC: PitchAlgorithm;
   export const PITCH_ALGORITHM_VOICE: PitchAlgorithm;
-
 }
